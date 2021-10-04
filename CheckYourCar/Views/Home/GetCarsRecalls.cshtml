@@ -1,0 +1,46 @@
+﻿@model IEnumerable<OnlineBusTransportation.Models.CarsRecall>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Recalls for @TempData["Company"] (@TempData["Model"])</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Recall Date
+            </th>
+            <th>Issues</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecallDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Issues)
+            </td>
+
+        </tr>
+        }
+        }
+            else
+            {
+    <tr>
+        <td colspan="2" style="color:red;">No Record Found!</td>
+    </tr>
+            }
+    </tbody>
+</table>
