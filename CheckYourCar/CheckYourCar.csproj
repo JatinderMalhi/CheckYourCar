@@ -2,21 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>aspnet-CheckYourCar-C8B3B42C-80B6-44FF-A914-457310BC6AA6</UserSecretsId>
-    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>aspnet-OnlineBusTransportation-1390E87C-F8BE-4147-A603-EA0085004271</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
+    <!--<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="5.0.0" />-->
+    <!--<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />-->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+    <!--<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />-->
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.19" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.19" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.19" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.19" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.19" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.19" />
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Data\TableManager.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
-
 </Project>

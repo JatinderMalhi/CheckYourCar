@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OnlineBusTransportation.Controllers
+namespace CheckYourCar.Controllers
 {
     public class RoleController : Controller
     {

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CheckYourCar.Models.CarMake>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List of Car Companies</h1>
+
+
+<button type="button" style="float:right;" class="btn btn-success" onclick="location.href='@Url.Action("AddCarMake", "Cars")'">Add Car Company</button>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Company)
+            </th>
+            <th>Update Information</th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company)
+                </td>
+                <td>
+                    <a asp-action="AddModel" asp-route-id="@item.ID" asp-route-name="@item.Company">Add Model</a> |
+                    <a asp-action="ViewModel" asp-route-id="@item.ID" asp-route-name="@item.Company" >View Models</a> |
+
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+                </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,74 @@
+﻿@model CheckYourCar.Models.CarsRecall
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Car Recalls</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="SaveCarRecall" asp-controller="Cars">
+
+            <div class="ban-top">
+                <div class="bnr-left">
+                    <label class="inputLabel">Car Make</label>
+
+                    <select name="CompanyID" asp-for="@Model.CompanyID" id="CompanyID" onchange="javascript:GetModelsByCarMake(this.options[this.selectedIndex].value);" class="form-control" asp-items="@ViewBag.carmake" ,"Please select"></select>
+
+                </div>
+                <div class="bnr-left">
+
+                    <label class="inputLabel">Car Model</label>
+
+                    <select name="ModelID" id="ModelID" class="form-control" asp-for="@Model.ModelID"></select>
+
+                </div>
+                <div class="bnr-left">
+
+                    <label class="inputLabel">Issues</label>
+                    <textarea asp-for="@Model.Issues" required rows="3" style="width:200%;" class="form-control"></textarea>
+
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="sear" style="text-align:center;">
+                <button class="seabtn" type="submit">Add Recall</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+    function GetModelsByCarMake(_makeId) {
+        $.ajax({
+            url: '/Home/GetModelsByCarMakeID/',
+            type: 'post',
+            data: {
+                makeID: _makeId
+            }
+        }).done(function (response) {
+            debugger;
+            $("#ModelID").html(response);
+        });
+        }
+        $(document).ready(function () {
+            var e = document.getElementById("CompanyID");
+            var ID = e.value;
+
+            GetModelsByCarMake(ID)
+        });
+
+</script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

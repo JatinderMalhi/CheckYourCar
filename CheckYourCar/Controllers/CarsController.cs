@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using OnlineBusTransportation.Data;
-using OnlineBusTransportation.Models;
+using CheckYourCar.Data;
+using CheckYourCar.Models;
 
 namespace CheckYourCar.Controllers
 {
@@ -44,7 +44,7 @@ namespace CheckYourCar.Controllers
             return View();
         }
 
-        // POST: Buses/Create
+
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,9 +116,6 @@ namespace CheckYourCar.Controllers
             }
             return RedirectToAction("AddRecall");
 
-            // return RedirectToAction("AddRecall");
-
-            //return View();
         }
 
 

@@ -1,8 +1,80 @@
+﻿
+@model CheckYourCar.Models.CarModel;
+@using Microsoft.AspNetCore.Identity
+@using CheckYourCar.Data;
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <br />
+        <h3>Welcome @UserManager.GetUserName(User)!</h3>
+        <br />
+        <br />
+    }
+    else
+    {
+        <div class="col-md-5 bann-info1 wow fadeInLeft animated" data-wow-delay=".5s">
+            <i class="fa fa-columns"></i>
+            <h3>Register your car and get recalls</h3>
+        </div>
+        <div class="col-md-7 bann-info wow fadeInRight animated" data-wow-delay=".5s">
+
+            <form method="post" asp-action="GetCarsRecalls" asp-controller="Home">
+
+                <h2>Check Recalls</h2>
+                <div class="ban-top">
+                    <div class="bnr-left">
+                        <label class="inputLabel">Car Make</label>
+
+                        <select name="carmake" id="carmake"  onchange="javascript:GetModelsByCarMake(this.options[this.selectedIndex].value);" class="form-control" asp-items="@ViewBag.carmake","Please select"></select>
+
+                    </div>
+                    <div class="bnr-left">
+
+                        <label class="inputLabel">Car Model</label>
+                        
+                        <select name="ddlModels" id="ddlModels" class="form-control" asp-for="@Model.Model"></select>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="sear" style="text-align:center;">
+                    <button class="seabtn"  type="submit">Check</button>
+                </div>
+
+            </form>
+
+        </div>
+    }
+    <div class="clearfix"></div>
 </div>
+<script>
+    function GetModelsByCarMake(_makeId) {
+        $.ajax({
+            url: '/Home/GetModelsByCarMakeID/',
+            type: 'post',
+            data: {
+                makeID: _makeId
+            }
+        }).done(function (response) {
+            debugger;
+            $("#ddlModels").html(response);
+        });
+    }
+    $(document).ready(function () {
+        var e = document.getElementById("carmake");
+        var ID = e.value;
+
+        GetModelsByCarMake(ID)
+    });
+
+</script>

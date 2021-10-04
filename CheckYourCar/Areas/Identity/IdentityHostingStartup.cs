@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OnlineBusTransportation.Data;
+using CheckYourCar.Data;
 
-[assembly: HostingStartup(typeof(OnlineBusTransportation.Areas.Identity.IdentityHostingStartup))]
-namespace OnlineBusTransportation.Areas.Identity
+[assembly: HostingStartup(typeof(CheckYourCar.Areas.Identity.IdentityHostingStartup))]
+namespace CheckYourCar.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
