@@ -89,9 +89,9 @@ namespace CheckYourCar.Controllers
                 string body1 = carsrecall.Issues.ToString();
                 for (var i = 0; i < carusersEmail.Count; i++) {
 
-                    var fromAddress = new MailAddress("checkrecallincar@gmail.com", "Check Your Car");
+                    var fromAddress = new MailAddress("********", "Check Your Car");
                     var toAddress = new MailAddress(carusersEmail[i].Email, carusersEmail[i].FirstName + " " + carusersEmail[i].LastName);
-                    const string fromPassword = "*@RogerFederer";
+                    const string fromPassword = "*********";
                     const string subject = "Recall for your car";
                     string body = body1;
 
